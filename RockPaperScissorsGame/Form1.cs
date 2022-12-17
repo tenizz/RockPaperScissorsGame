@@ -16,7 +16,7 @@ namespace RockPaperScissorsGame
         public string MoveTranslated;
         public int userScore = 0;
         public int pcScore = 0;
-        public int winningScore = 5;
+        public int winningScore = 1;
 
         public string MoveToWords(int move)
         {
@@ -43,6 +43,7 @@ namespace RockPaperScissorsGame
 
             if (userMove == pcMove)
             {
+                listBox1.Items.Add("Winning score is: " + winningScore);
                 listBox1.Items.Add("Computer: " + pcMove + MoveToWords(pcMove));
                 listBox1.Items.Add("You: " + userMove + MoveToWords(userMove));
                 listBox1.Items.Add("Draw!");
@@ -51,6 +52,7 @@ namespace RockPaperScissorsGame
                 || (userMove == 2 && pcMove == 1) 
                 || (userMove == 3 && pcMove == 2)) 
             {
+                listBox1.Items.Add("Winning score is: " + winningScore);
                 listBox1.Items.Add("Computer: " + pcMove + MoveToWords(pcMove));
                 listBox1.Items.Add("You: " + userMove + MoveToWords(userMove));
                 listBox1.Items.Add("Win!");
@@ -58,6 +60,7 @@ namespace RockPaperScissorsGame
                 userScore = userScore + 1;
             } else
             {
+                listBox1.Items.Add("Winning score is: " + winningScore);
                 listBox1.Items.Add("Computer: " + pcMove + MoveToWords(pcMove));
                 listBox1.Items.Add("You: " + userMove + MoveToWords(userMove));
                 listBox1.Items.Add("Loss!");
@@ -111,6 +114,12 @@ namespace RockPaperScissorsGame
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            winningScore = Convert.ToInt32(numericUpDown1.Value);
+            listBox1.Items.Add("Winning score is: " + winningScore);
         }
     }
 }
